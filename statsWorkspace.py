@@ -48,20 +48,20 @@ def s_mean():
     print(f"The sample mean is: {ret} ")
     return ret
 
-#NOT_WORKING PROPERLY
+
 def s_median():
     global the_list
     sorted_list = sorted(the_list)
-    print(sorted_list)
+    #print(sorted_list)
     n = len(sorted_list)
-    if n%2 ==0:
+    if n%2 == 0:
         middle1 = sorted_list[n // 2 - 1]
         middle2 = sorted_list[n // 2]
         median = (middle1 + middle2) / 2
     else:
         # If the length is odd, the median is the middle element
         median = sorted_list[n // 2]
-    print(f"The median is: {median}")
+    print(f"The median is: ",end='')
     return median
 
 #NOT WORKING
@@ -74,7 +74,6 @@ def trimmed_mean(trim):
         return None
     
     n = len(the_list)
-    
     
     # Check if trim is within a valid range
     if trim <= 0 or trim >= 100:
