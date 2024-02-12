@@ -1,6 +1,7 @@
 the_list = []
     
 def insertion_sort(alist):
+    """Returns sorted list"""
     for j in range(1, len(alist)):
         key = alist[i]
         i = j-1
@@ -8,15 +9,18 @@ def insertion_sort(alist):
             alist[i+1] = alist[i]
             i = i - 1
         alist[i+1] = key
+    return alist
         
 #clears the grid and then prints it
 def cleardata():
+    """Clears data"""
     global the_list
     the_list = []
     print(the_list)
     print("list cleared")
             
 def input_data():
+    """Inputs the data"""
     global the_list
     print("Enter data points separated by tabs (type 'x' to finish):")
     while True:
@@ -30,6 +34,7 @@ def input_data():
             print("Invalid input. Please enter valid numbers separated by tabs.")
 
 def print_list():
+    """Prints the list"""
     print("[")
     for n in the_list:
         if n == len(the_list)-1:
@@ -39,6 +44,7 @@ def print_list():
     print("]")
 
 def s_mean():
+    """Prints sample mean"""
     global the_list
     tot = 0.0
     n = len(the_list)
@@ -50,6 +56,7 @@ def s_mean():
 
 
 def s_median():
+    """Prints sample median"""
     global the_list
     sorted_list = sorted(the_list)
     #print(sorted_list)
@@ -66,8 +73,13 @@ def s_median():
 
 #NOT WORKING
 def trimmed_mean(trim):
+    """Returns trimmed mean
+    :param trim: arg1, 
+    :type trim: int
+    :return:trimmed mean
+    """
     global the_list
-    #TODO
+
     #check if list empty
     if not the_list:
         print("list empty")
@@ -75,7 +87,7 @@ def trimmed_mean(trim):
     
     n = len(the_list)
     
-    # Check if trim is within a valid range
+    #check if trim is within a valid range
     if trim <= 0 or trim >= 100:
         print("Error: trim should be a percentage between 0 and 100 exclusive.")
         return None
@@ -120,7 +132,7 @@ def trimmed_mean(trim):
     return ret
 
 def skew():
-    
+    """Prints skew"""
     global the_list
     mean = s_mean()
     median = s_median()
@@ -133,12 +145,14 @@ def skew():
         
 
 def s_sum():
+    """Prints the sample sum"""
     tot = 0
     for x in the_list:
         tot += x
     return x
 
 def s_range():
+    """Prints the sample range"""
     sorted_list = sorted(the_list)
     hi = sorted_list[-1]
     lo = sorted_list[0]
@@ -148,6 +162,7 @@ def s_range():
     return (hi-lo)
 
 def s_variance():
+    """Prints sample variance"""
     global the_list
     
     if not the_list:
@@ -168,10 +183,31 @@ def s_variance():
     return variance
     
 def s_std():
+    """Prints the sample standard deviation"""
     v = s_variance()
     return v**0.5
 
 def sum_sqr():
+    """Prints the sum of squares"""
     global the_list
     sum_squares = sum(entry ** 2 for entry in the_list)
     return sum_squares
+
+def s_stats():
+    """Prints all sample stats functions. Specifically:
+        s_mean()
+        s_median()
+        s_sum()
+        s_range()
+        s_variance()
+        s_std()
+    """
+    print("Printing sample stats")
+    print("-------------------------------------")
+    s_mean()
+    s_median()
+    s_sum()        
+    s_range()
+    s_variance()
+    s_std()
+    print("-------------------------------------")
