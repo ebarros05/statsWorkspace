@@ -1,5 +1,12 @@
 the_list = []
     
+class XY:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
 def insertion_sort(alist):
     """Returns sorted list"""
     for j in range(1, len(alist)):
@@ -32,7 +39,25 @@ def input_data():
             the_list.extend(data_points)
         except ValueError:
             print("Invalid input. Please enter valid numbers separated by tabs.")
+def input_xy():
+    """Inputs data in XY pairs"""
+    global the_list
+    print("Enter data in xy pairs separated by a comma. tabs to separate data(type 'x' to finish):")
+    while True:
+        u_in = input("Enter data:")
+        if u_in.lower() == 'x':
+            break
+        try:
+            for s in u_in.split('\t'):
+                try:
+                    x,y = s.split(',')
+                    xyP = XY(x=x,y=y)
+                    the_list.append(xyP)
+                except SyntaxError:
+                    ("please enter x,y pair")
 
+        except ValueError:
+            print("Invalid Input")
 def print_list():
     """Prints the list"""
     print("[")
@@ -192,6 +217,9 @@ def sum_sqr():
     global the_list
     sum_squares = sum(entry ** 2 for entry in the_list)
     return sum_squares
+
+def riemann_sum():
+    """Prints the """
 
 def s_stats():
     """Prints all sample stats functions. Specifically:
